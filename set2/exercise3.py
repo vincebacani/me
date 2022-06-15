@@ -226,7 +226,7 @@ def loops_6():
     for i in range(10):
         wedge_row = []
         for j in range(i + 1):
-            wedge_row.append(j)
+            wedge_row.append(str(j))
         number_wedge.append(wedge_row)
     return number_wedge
 
@@ -252,7 +252,17 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    pyramid = []
+    for i in range(5):
+        numbers_pyramid = []
+        for j in range(4 - i):
+            numbers_pyramid.append(" ")
+        for k in range(2 * i + 1):
+            numbers_pyramid.append("*")
+        for j in range(4 - i):
+            numbers_pyramid.append(" ")
+        pyramid.append(numbers_pyramid)
+    return pyramid
 
 
 def little_printer(some_kind_of_list, exercise_name):
