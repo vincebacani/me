@@ -2,6 +2,9 @@
 """Modify each function until the tests pass."""
 
 
+import numbers
+
+
 def is_odd(a_number):
     """Return True if a_number is odd, and False if a_number is even.
 
@@ -13,7 +16,7 @@ def is_odd(a_number):
 
     So if a_number modulo two is zero, then it's even.
     """
-    return None
+    return bool(a_number % 2 != 0)
 
 
 def fix_it(moves=True, should_move=True):
@@ -31,7 +34,14 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements.
     As an extra challenge, see if you can get that down to three.
     """
-    return None
+    if moves and should_move:
+        return "No Problem"
+    elif moves and not should_move:
+        return "Duct Tape"
+    elif not moves and should_move:
+        return "WD-40"
+    elif not moves and not should_move:
+        return "No Problem"
 
 
 def loops_preview():
@@ -54,7 +64,10 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    return None
+    stars_list = []
+    for i in range(10):
+        stars_list.append("*")
+    return stars_list
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -67,7 +80,10 @@ def loops_1c(number_of_items=5, symbol="#"):
     Remember that you're being passed arguments here. Don't hard code the number
     or the symbol, let it be whatever it wants to be.
     """
-    return None
+    hash_list = []
+    for i in range(number_of_items):
+        hash_list.append(symbol)
+    return hash_list
 
 
 def loops_2():
@@ -88,7 +104,10 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    return None
+    stars_square = []
+    for i in range(10):
+        stars_square.append(loops_1c(number_of_items=10, symbol="*"))
+    return stars_square
 
 
 def loops_3():
@@ -112,7 +131,13 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
+    numbers_square = []
+    for i in range(10):
+        numbers_row = []
+        for j in range(10):
+            numbers_row.append(str(i))
+        numbers_square.append(numbers_row)
+    return numbers_square
 
 
 def loops_4():
@@ -132,7 +157,13 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    numbers_square = []
+    for i in range(10):
+        numbers_row = []
+        for j in range(10):
+            numbers_row.append(str(j))
+        numbers_square.append(numbers_row)
+    return numbers_square
 
 
 def loops_5():
@@ -162,7 +193,13 @@ def loops_5():
         f"There are {num_bottles} green bottles"
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    coords_square = []
+    for i in range(10):
+        coords_row = []
+        for j in range(5):
+            coords_row.append("(i{}, j{})".format(i, j))
+        coords_square.append(coords_row)
+    return coords_square
 
 
 def loops_6():
@@ -185,7 +222,13 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    number_wedge = []
+    for i in range(10):
+        wedge_row = []
+        for j in range(i + 1):
+            wedge_row.append(j)
+        number_wedge.append(wedge_row)
+    return number_wedge
 
 
 def loops_7():
