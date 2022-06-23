@@ -46,7 +46,10 @@ def stubborn_asker(low, high):
 
     Look up the docs for a function called "input"
     """
-    return None
+    while True:
+        i = int(input(f"Any number between {low} and {high}"))
+        if i <= high and i >= low:
+            return i
 
 
 def not_number_rejector(message):
@@ -56,7 +59,13 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+    while True:
+        user_input = input(f"type a number")
+        try:
+            number = int(user_input)
+            return number
+        except:
+            print("please put a number")
 
 
 def super_asker(low, high):
@@ -65,7 +74,14 @@ def super_asker(low, high):
     Combine what you learnt from stubborn_asker and not_number_rejector
     to make a function that does it all!
     """
-    return None
+    while True:
+        user_input = input(f"Give a number between {low} and {high}:")
+        try:
+            number = int(user_input)
+            if low < number < high:
+                return number
+        except:
+            print(f"{user_input} is not a number")
 
 
 if __name__ == "__main__":
