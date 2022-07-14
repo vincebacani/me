@@ -29,12 +29,22 @@ def advancedGuessingGame():
     purpose if you can!
     """
     print("\nWelcome to the guessing game!")
-    print("A number between _ and _ ?")
-    lowerBound = input("Enter a lower bound:")
-    print(f"Ok then, a number between {lowerBound} and _")
-    upperBound = input("Enter an upper bound: ")
-    print(f"OK then, a number between {lowerBound} and {upperBound} ?")
-    upperBound = int(upperBound)
+    while True:
+        try:
+            print("A number between _ and _ ?")
+            lowerBound = input("Enter a lower bound:")
+            print(f"Ok then, a number between {lowerBound} and _")
+            upperBound = input("Enter an upper bound: ")
+            upperBound = int(upperBound)
+            if lowerBound == upperBound:
+                print(
+                    f"The bounds are the same, meaning the answer will be {lowerBound} and {upperBound}"
+                )
+            else:
+                print(f"OK then, a number between {lowerBound} and {upperBound} ?")
+            break
+        except Exception as e:
+            print("this is not a number, please try again")
 
     actualNumber = random.randint(lowerBound, upperBound)
 
