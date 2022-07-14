@@ -36,7 +36,7 @@ def advancedGuessingGame():
     print(f"OK then, a number between {lowerBound} and {upperBound} ?")
     upperBound = int(upperBound)
 
-    actualNumber = random.randint(0, upperBound)
+    actualNumber = random.randint(lowerBound, upperBound)
 
     guessed = False
 
