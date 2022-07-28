@@ -138,8 +138,8 @@ def set_it_on_fire(input_string="very naughty boy") -> str:
     TIP: consider using the 'join' method in Python.
     TIP: make sure that you have a 🔥 on both ends of the string.
     """
-
-    return None
+    interleave = "🔥" + "🔥".join(input_string.upper()) + "🔥"
+    return interleave
 
 
 def pet_filter(letter="a") -> List:
