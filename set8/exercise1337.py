@@ -115,17 +115,16 @@ def fizz_buzz() -> List:
     """
     fizz_buzz_list = []
     # your code here
-    for fizz_buzz_list in range(100):
-        if fizz_buzz_list % 3 == 0 and fizz_buzz_list % 5 == 0:
-            print("FizzBuzz")
-            continue
-        elif fizz_buzz_list % 3 == 0:
-            print("Fizz")
-            continue
-        elif fizz_buzz_list % 5 == 0:
-            print("Buzz")
+    for i in range(1, 101):
+        if i % 3 == 0 and i % 5 == 0:
+            fizz_buzz_list.append("FizzBuzz")
+        elif i % 3 == 0:
+            fizz_buzz_list.append("Fizz")
+        elif i % 5 == 0:
+            fizz_buzz_list.append("Buzz")
         else:
-            return fizz_buzz_list
+            fizz_buzz_list.append(i)
+    return fizz_buzz_list
 
 
 def set_it_on_fire(input_string="very naughty boy") -> str:
