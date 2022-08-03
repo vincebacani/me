@@ -40,7 +40,18 @@ def get_some_details():
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+
+    lastname = data["results"][0]["name"]["last"]
+    password = data["results"][0]["login"]["password"]
+
+    postcode = int(data["results"][0]["location"]["postcode"])
+    ident = int(data["results"][0]["id"]["value"])
+    postcodePlusID = postcode + ident
+    return {
+        "lastName": lastname,
+        "password": password,
+        "postcodePlusID": postcodePlusID,
+    }
 
 
 def wordy_pyramid():
@@ -78,6 +89,19 @@ def wordy_pyramid():
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
     pyramid = []
+    wordURL = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
+
+    for i in range(3, 20, 2):
+        url = wordURL.format(length=i)
+        r = requests.get(url)
+        t = r.text
+        pyramid.append(str(t))
+
+    for j in range(20, 3, -2):
+        url = wordURL.format(length=j)
+        req = requests.get(url)
+        txt = req.text
+        pyramid.append(str(txt))
 
     return pyramid
 
@@ -96,13 +120,28 @@ def pokedex(low=1, high=5):
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
     """
-    id = 5
-    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
+    pokedex_entry = []
+    for id in range(low, high):
+        url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+        r = requests.get(url)
+        if r.status_code is 200:
+            the_json = r.json()
+            pokedex_entry.append(the_json)
 
-    return {"name": None, "weight": None, "height": None}
+    tallest = None
+    max_height = -1
+    for pokemon in pokedex_entry:
+        if pokemon["height"] > max_height:
+            max_height = pokemon["height"]
+            tallest = pokemon
+
+    stats = {
+        "name": tallest["name"],
+        "weight": tallest["weight"],
+        "height": tallest["height"],
+    }
+
+    return stats
 
 
 def diarist():
@@ -122,6 +161,7 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
+
     pass
 
 

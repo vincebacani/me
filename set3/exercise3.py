@@ -30,11 +30,18 @@ def advancedGuessingGame():
     """
     print("\nWelcome to the guessing game!")
     while True:
+        print("A number between _ and _ ?")
+        lowerBound = input("Enter a lower bound:")
         try:
-            print("A number between _ and _ ?")
-            lowerBound = input("Enter a lower bound:")
+            lowerBound = int(lowerBound)
             print(f"Ok then, a number between {lowerBound} and _")
-            upperBound = input("Enter an upper bound: ")
+            break
+        except:
+            print("Please input a number")
+
+    while True:
+        upperBound = input("Enter an upper bound: ")
+        try:
             upperBound = int(upperBound)
             if lowerBound == upperBound:
                 print(
@@ -58,11 +65,14 @@ def advancedGuessingGame():
             if guessedNumber == actualNumber:
                 print(f"You got it!! It was {actualNumber}")
                 guessed = True
+                break
+            elif guessedNumber < lowerBound or guessedNumber > upperBound:
+                print("This guess is out of bounds, try again:")
             elif guessedNumber < actualNumber:
                 print("Too small, try again :'(")
             else:
                 print("Too big, try again :'(")
-        except:
+        except Exception as e:
             print("Please input a number")
     return "You got it!"
 
